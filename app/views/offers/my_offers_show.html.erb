@@ -1,0 +1,44 @@
+<div class="fotos d-flex m-4">
+  <div class="foto m-2">
+    <img src="<%= cl_image_path @offer.photos[0].key %>"
+      class="d-block w-100"
+      alt="Canyon at Nigh"/>
+    </div>
+
+      <div class="foto ml-2 m-2">
+    <img src="<%= cl_image_path @offer.photos[1].key %>"
+      class="d-block w-100"
+      alt="Canyon at Nigh"/>
+    </div>
+</div>
+
+  <div class="container-show-reservations mt-0">
+
+      <div class="container container-reservation-content">
+        <%# <div class="botton-show">
+          <%= link_to "Back to My Reservations", my_reservations_path, class: "btn btn-primary" %>
+        <%# </div> %>
+
+        <div class="my-reservation-details">
+
+          <div class= "d-flex justify-content-between">
+            <div>
+              <h2><%= @offer.title %></h2>
+              <p> <small><%= @offer.location %> </small></p>
+              <hr><br>
+            </div>
+
+            <div class="botton-show cancellation-show">
+              <%= link_to "Edit offer", edit_offer_path, class: "btn btn-primary" %>
+              <%= link_to "Delete", offer_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %>
+              <%= link_to "Booking requests", reservations_path, class: "btn btn-primary" %>
+            </div>
+
+          </div>
+          <p> Hosted by: <%= @offer.user.full_name %> </p>
+          <p><em>A bit more about the place:</em></p>
+          <p> <%= @offer.description %> </p>
+        </div>
+
+      </div>
+  </div>

@@ -1,0 +1,50 @@
+<div class="container-my-reservations">
+
+  <div class="boris-card mb-5 p-0">
+    <img src="https://images.unsplash.com/photo-1571988840298-3b5301d5109b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" />
+    <div class="card-boris-infos p-3">
+      <h2>My Offers</h2>
+      <p>Check your current <strong>offers</strong> </p>
+    </div>
+  </div>
+
+  <div class="cards-container">
+      <div class="container-show-header">
+        <div class="botton-show button-offers">
+          <%= link_to "Create new offer", new_offer_path, class:"btn btn-primary" %>
+        </div>
+      </div>
+  </div>
+
+  <div class="cards">
+    <% @offers.each do |offer| %>
+    <div class="card-trip">
+      <% if offer.photos[0] != nil %>
+        <%= cl_image_tag offer.photos[0].key  %>
+      <% else %>
+        <img src="https://images.unsplash.com/photo-1543051932-6ef9fecfbc80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=424&q=80" />
+      <% end %>
+
+      <%# <% offer.photos.each do |photo| %>
+        <%# <%= cl_image_tag photo.key %>
+      <%# <% end %>
+      <div class="card-trip-infos">
+        <div class="card-content">
+          <div class="card-section">
+            <h2><%= offer.title %></h2>
+          </div>
+          <div class="reservation-content">
+            <p><em><%= offer.description %></em></p>
+            <p>Host: <%= offer.user.full_name %></p>
+            <p>Location: <%= offer.location %></p>
+            <p>$<%= offer.price_per_night %> per night</p>
+          </div>
+          <div class="reservation-actions">
+            <%= link_to "Details", my_offers_show_path(offer), class:"ms-3 text-success"  %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

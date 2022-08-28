@@ -1,0 +1,28 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);">
+  <div class="container">
+    <h1>Edit your place </h1>
+  </div>
+</div>
+
+<div class="container-my-reservations">
+  <div class="cards-container">
+      <div class="container-show-header">
+        <div class="botton-show">
+          <%= link_to "Back to My Offers", offers_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+  </div>
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-6 m-auto">
+        <div class="flat-form form-container">
+            <h1> Edit your place details</h1>
+            <div class="mt-3">
+              <%= render "form", offer: @offer %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

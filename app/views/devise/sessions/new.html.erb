@@ -1,0 +1,35 @@
+<div class="container forms-login-signup">
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-6 m-auto">
+        <div class="form-container">
+          <h2>Log in</h2>
+
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
+            <div class="form-group">
+              <%= f.input :email, class:"form-control",
+                          required: false,
+                          autofocus: true,
+                          input_html: { autocomplete: "email" } %>
+            </div>
+            <div class="form-group">
+              <%= f.input :password, class:"form-control",
+                          required: false,
+                          input_html: { autocomplete: "current-password" } %>
+            </div>
+            <div class="form-check">
+              <%= f.input :remember_me, class: "form-check-input", as: :boolean if devise_mapping.rememberable? %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Log in", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+          <div class="container-links">
+            <%= render "devise/shared/links" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

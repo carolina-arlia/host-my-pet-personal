@@ -1,0 +1,42 @@
+.footer {
+  background: $green-hmp;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0px 50px;
+  color: rgba(0,0,0,0.3);
+  margin-top: auto;
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+.footer-links a {
+  color: $gray-hmp;
+  opacity: 0.3;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
+
+.footer-copyright {
+  color: $gray-hmp;
+}
+
+.footer .fa-heart {
+  color: #D23333;
+}
+
+@media (max-width: 654px) {
+  .footer-copyright {
+    display: none;
+  }
+
+  .footer {
+    justify-content: center;
+  }
+}

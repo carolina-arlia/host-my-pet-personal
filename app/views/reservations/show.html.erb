@@ -1,0 +1,60 @@
+  <% if @reservation.offer.photos[0] != nil %>
+    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @reservation.offer.photos[0].key %>);">
+
+  <% else %>
+    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1600456899121-68eda5705257?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1257&q=80);">
+  <% end %>
+
+    <div class="container">
+        <h1>Reservation details for <%= @reservation.offer.title %></h1>
+    </div>
+  </div>
+
+  <div class="container-show-reservations">
+
+      <div class="container container-reservation-content">
+
+        <%# <div class="botton-show">
+          <%= link_to "Back to My Reservations", my_reservations_path, class: "btn btn-primary" %>
+        <%# </div> %>
+
+        <div class="my-reservation-details">
+          <h2><%= @reservation.offer.title %></h2>
+          <p> <small><%= @reservation.offer.location %> </small></p>
+          <hr><br>
+          <p> Hosted by: <%= @reservation.offer.user.full_name %> </p>
+          <p> <%= @reservation.offer.description %> </p>
+          <p>Reservation status:
+              <% if @reservation.confirmed %>
+                <%= "Confirmed" %>
+              <% else %>
+                <%= "Not Confirmed" %>
+              <% end %>
+            </p>
+        </div>
+
+        <div class="botton-show cancellation-show">
+          <%= link_to "Request cancellation", reservation_path(@reservation), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-primary" %>
+        </div>
+
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-10 m-auto">
+            <div class="flat-form form-container">
+                <h3> $ <%= @reservation.offer.price_per_night %> <small>per night</small></h3>
+                <div class="mt-3">
+                    <%= simple_form_for @reservation do |r| %>
+                    <%= r.input :date_checkin, as: :date, html5: true %>
+                    <%= r.input :date_checkout, as: :date, html5: true%>
+                    <%= r.input :guests %>
+                    <%= r.button :submit, class: "btn btn-primary" %>
+                    <% end %>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>

@@ -1,0 +1,37 @@
+.container-show-reservations {
+  margin: 50px;
+  display: flex;
+}
+
+.my-reservation-details {
+  margin-top: 15px;
+}
+
+.container-reservation-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+@media (max-width: 768px) {
+  .container-show-reservations {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container-reservation-content {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .my-reservation-details {
+    margin-bottom: 15px;
+  }
+
+  .container-show-reservations {
+    margin: 40px;
+  }
+}

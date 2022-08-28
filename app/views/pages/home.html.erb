@@ -1,0 +1,75 @@
+<div class="banner-home-container" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path('bannerhome.jpg') %>);">
+
+  <div class="container container-home">
+    <div class="banner-home">
+      <h1> <strong>Host my Pet</strong> </h1>
+      <p><span data-controller="typed-js"></span></p>
+      <%# <a class="btn btn-flat" href="#">Apply now</a> %>
+      <div class="formulario">
+        <div class="form-group">
+          <%= form_with url: offers_path, method: :get do %>
+            <div class="input-group">
+              <%= text_field_tag :query, params[:query], class: "form-control", placeholder: 'Search by location' %>
+            </div>
+            <div class="input-group">
+              <select id="inputState" class="form-control">
+                <option selected >Number of pets</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+              </select>
+            </div>
+            <%= submit_tag "Search", class: "btn btn-primary m-0 border-0 ", id:"basic-addon2" %>
+          <% end %>
+        </div>
+      </div>
+            <!--
+            <%= simple_form_for(@offer) do |f| %>
+              <%= f.input :location, input_html: {data: {location_autocomplete_target: "location"}, class: "d-none"},  wrapper_html: {data: {controller: "location-autocomplete",location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]} } %>
+            <% end %>
+          <%= link_to "Search", offers_path, class: "btn btn-primary" %>
+          -->
+    </div>
+  </div>
+</div>
+
+<div class="container-my-reservations">
+  <div class="cards-container">
+      <h3 class="mb-3">Recommended</h3>
+      <div class="container-show-header">
+        <%# <div class="botton-show">
+          <%= link_to "Add a Movie", new_list_bookmark_path(@list), class: "btn btn-success" %>
+        <%# </div> %>
+      </div>
+  </div>
+
+  <div class="cards">
+    <% @offers.each do |offer| %>
+    <div class="card-trip">
+        <% if offer.photos[0] != nil %>
+            <%= cl_image_tag offer.photos[0].key  %>
+        <% else %>
+            <img src="https://images.unsplash.com/photo-1543051932-6ef9fecfbc80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=424&q=80" />
+        <% end %>
+      <div class="card-trip-infos">
+        <div class="card-content">
+          <div class="card-section">
+            <div class="card-section-title">
+              <h2><%= offer.title %></h2>
+              <h2 class="card-home-pricing"><em>$<%= offer.price_per_night.round %></em></h2>
+            </div>
+            <p><small><%= offer.location %></small></p>
+          </div>
+          <div class="reservation-content">
+            <p><%= offer.description %></p>
+            <p><small>Hosted by: <%= offer.user.full_name %></small></p>
+          </div>
+          <div class="reservation-actions">
+            <%= link_to "More details", offer_path(offer), class:"ms-3 text-success" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

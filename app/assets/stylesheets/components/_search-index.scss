@@ -1,0 +1,17 @@
+.search-index {
+  display: flex;
+}
+
+.map{
+  max-width: 40vw;
+  margin-left: 15px;
+  padding-left: 15px;
+  position: fixed;
+}
+
+.cards-index {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  margin-right: 20px;
+}

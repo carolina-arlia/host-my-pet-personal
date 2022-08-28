@@ -1,0 +1,72 @@
+<%# <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1534361960057-19889db9621e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);">
+  <div class="container">
+    <h1>My Reservations </h1>
+  </div>
+</div>
+ %>
+
+
+<div class="container-my-reservations">
+
+  <div class="boris-card mb-5 p-0">
+  <img src="https://images.unsplash.com/photo-1585664811087-47f65abbad64?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" />
+    <div class="card-boris-infos p-3">
+    <h2>My reservations</h2>
+    <p>Check your upcoming <strong> bookings</strong> </p>
+  </div>
+
+</div>
+
+  <div class="cards-container">
+      <div class="container-show-header">
+        <%# <div class="botton-show">
+          <%= link_to "Add a Movie", new_list_bookmark_path(@list), class: "btn btn-success" %>
+        <%# </div> %>
+      </div>
+  </div>
+
+  <div class="cards mt-3">
+    <% @reservations.each do |reservation| %>
+      <% if current_user.id == reservation.user_id %>
+        <div class="card-trip">
+          <% if reservation.offer.photos[0] != nil %>
+              <%= cl_image_tag reservation.offer.photos[0].key  %>
+          <% else %>
+              <img src="https://images.unsplash.com/photo-1543051932-6ef9fecfbc80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=424&q=80" />
+          <% end %>
+
+          <div class="card-trip-infos">
+            <div class="card-content">
+              <div class="card-section">
+                <h2>Booking for <%= reservation.offer.title %></h2>
+                <%# <div class="rating">
+                  <p>5</p>
+                  <i class="fa-solid fa-star"></i>
+                </div> %>
+              </div>
+
+              <div class="reservation-content">
+                <p>Check in: <%= reservation.date_checkin %></p>
+                <p>Check out: <%= reservation.date_checkout %></p>
+                <p>Guests: <%= reservation.guests %></p>
+                <p>Reservation status:
+                  <% if reservation.confirmed %>
+                    <%= "Confirmed" %>
+                  <% else %>
+                    <%= "Not Confirmed" %>
+                  <% end %>
+                </p>
+              </div>
+
+              <div class="reservation-actions">
+                  <%= link_to "Cancel", reservation_path(reservation), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:"ms-3 text-success" %>
+                  <%= link_to "Edit", edit_reservation_path(reservation), class:"ms-3 text-success" %>
+                  <%= link_to "Details", reservation_path(reservation), class:"ms-3 text-success"  %>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+    <% end %>
+  </div>
+</div>

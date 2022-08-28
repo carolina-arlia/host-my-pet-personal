@@ -1,0 +1,58 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+}
+
+.banner-home-container {
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  display: flex;
+}
+
+.banner, .banner-home-container h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.banner-home-container p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  margin-bottom: 30px;
+}
+
+.banner-home{
+  // position: absolute;
+  top: 90px;
+  left: 0px;
+  margin: 20px;
+  margin-top: 30px;
+}
+
+.container-home {
+  margin-left: 15px;
+  max-width: 45vw;
+  // display: flex;
+  // align-items: center;
+}
+
+#inputState {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .banner-home-container {
+    display: flex;
+  }
+
+  .container-home {
+    display: flex;
+    max-width: 100%
+  }
+}
